@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                     <h2>Our Room</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- our_room -->
+      <div  class="our_room">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <p  class="margin_0">Lorem Ipsum available, but the majority have suffered </p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               
+               {% for x in a_room %}
+               <div class="col-md-4 col-sm-6">
+                  <div class="product product-2">
+                     <figure class="product-media">
+                         <!-- <span class="product-label label-circle label-top">Top</span> -->
+                         <a href="{% url 'rooms_order' x.id %}">
+                             <img src="{{ x.Image.url }}" alt="Product image" class="product-image">
+                         </a>
+   
+                         <div class="product-action-vertical">
+                             <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                         </div><!-- End .product-action -->
+   
+                         <div class="product-action">
+                             <a href="{% url 'rooms_order' x.id %}" class="btn-product btn-cart" title="Add to cart"><span>Details</span></a>
+                             
+                         </div><!-- End .product-action -->
+                     </figure><!-- End .product-media -->
+   
+                     <div class="product-body">
+                         <div class="product-cat">
+                             <a href="#"></a>
+                         </div><!-- End .product-cat -->
+                         <h3 class="product-title"><a href="{% url 'rooms_order' x.id %}">{{ x.Name }}</a></h3><!-- End .product-title -->
+                         <div class="product-price"> 
+                             
+                             {% if cc.discount_price %}
+                             <span new="new price">৳ {{ x.discount_price }} </span> &nbsp;
+                             <span new="old-price" style="color: rgb(201, 201, 201);"> Was  <del>৳{{ x.Price }}</del></span>
+                             {% else %}
+                             <span new="new price">৳ {{ x.Price }} </span>
+                             {% endif %}
+                         </div><!-- End .product-price -->
+                         <div class="ratings-container">
+                             <div class="ratings">
+                                 <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                             </div><!-- End .ratings -->
+                             <span class="ratings-text">( 4 Reviews )</span>
+                         </div><!-- End .rating-container -->
+                     </div><!-- End .product-body -->
+                 </div>
+                 </div>
+               
+               {% endfor %}
+                  
+               
+               
+            </div>
+         </div>
+      </div>
+      <!-- end our_room -->
+{% endblock content %}
+   

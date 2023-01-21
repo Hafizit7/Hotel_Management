@@ -1,0 +1,80 @@
+<div class="product product-2">
+                            <figure class="product-media">
+                                <span class="product-label label-circle label-top">Top</span>
+                                <a href="{% url 'product-details' p.pk %}">
+                                    <img src="{{ p.image.url }}" alt="Product image" class="product-image">
+                                </a>
+
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                </div><!-- End .product-action -->
+
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                    <a href="{% url 'product-details' p.pk %}" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                </div><!-- End .product-action -->
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <div class="product-cat">
+                                    <a href="#">{{ p.catagory.name }}</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="{% url 'product-details' p.pk %}">{{ p.name }}</a></h3><!-- End .product-title -->
+                                <div class="product-price"> 
+                                    
+                                    {% if p.discount_price %}
+                                    <span new="new price">৳ {{ p.discount_price }} </span> &nbsp;
+                                    <span new="old-price" style="color: rgb(201, 201, 201);"> Was  <del>৳{{ p.price }}</del></span>
+                                    {% else %}
+                                    <span new="new price">৳ {{ p.price }} </span>
+                                    {% endif %}
+                                </div><!-- End .product-price -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 4 Reviews )</span>
+                                </div><!-- End .rating-container -->
+                            </div><!-- End .product-body -->
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {% for cc in ourroom %}
+                    
+               <div class="col-md-4 col-sm-6">
+                  
+                  <div id="serv_hover"  class="room">
+                     <a href="{% url 'rooms_order' cc.id %}">
+                     <div class="product product-2">
+                     <div class="room_img">
+                        <figure><img src="{{ cc.Image.url }}" alt="#"/>
+                           
+                           <div class="product-action">
+                              <a href="{% url 'rooms_order' cc.id %}" class="btn-product btn-cart" title="Add to cart"><span>Room Details</span></a>
+                             
+                          </div>
+                        </figure>
+                     </div>
+                  </div>
+
+                     <div class="product-body">
+                        <h3>{{ cc.Name }}</h3>
+                        <h4 style=" font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; "> <span style="color: coral;">{{ cc.Price }} ৳ &nbsp </span> <span style="color: rgb(189, 189, 189);">{{ cc.Day }}</span> </h4>
+                    </div><!-- End .product-body -->
+                  </a>
+                  </div>
+               
+               </div>
+               
+               {% endfor %}
